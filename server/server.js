@@ -12,14 +12,12 @@ const io = socketIO(server);
 
 io.on("connection", (socket) => {
     console.log("New User connected");
-    socket.emit('newMessage', {
-        from: 'francis.ve@pitsolutions.com',
-        to: 'akhil.kn@pitsolutions.com',
-        createdAt: 123
-    })
-
-    socket.on("createMessage", function (re) {
-        console.log("Created message", re);
+    socket.on("createMessage", function (message) {
+        console.log("Created message", message);
+        socket.broadcast.emit('newMessage', {
+            ...message,
+            createdAt: new Date().getTime()
+        })
     });
 
     socket.on("disconnect", function () {
