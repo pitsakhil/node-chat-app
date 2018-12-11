@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-body {
-  background-color: lightblue;
-}
+    <style>
+        body {
+            background-color: lightblue;
+        }
 
-h1 {
-  color: white;
-  text-align: center;
-}
+        h1 {
+            color: white;
+            text-align: center;
+        }
 
-p {
-  font-family: verdana;
-  font-size: 20px;
-}
-</style>
+        p {
+            font-family: verdana;
+            font-size: 20px;
+        }
+    </style>
 </head>
+
 <body>
+    <h1>Node Chat App</h1>
+    <p>This is a paragraph.</p>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
 
-<h1>Node Chat App</h1>
-<p>This is a paragraph.</p>
+        socket.on("connect",()=>{
+            console.log("Connected to server.");
+        });
 
+        socket.on("disconnect",()=>{
+            console.log("Connected to server.");
+        });
+    </script>
 </body>
+
 </html>
